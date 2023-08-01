@@ -140,7 +140,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Common\Network\CTcpClient.cpp" />
+    <ClCompile Include="Common\Network\CTcpServer.cpp" />
+    <ClCompile Include="Common\Network\CUdpClient.cpp" />
+    <ClCompile Include="Common\Network\CUdpServer.cpp" />
+    <ClCompile Include="Common\Network\INetwork.cpp" />
+    <ClCompile Include="main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="main_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\Network\CTcpClient.h" />
+    <ClInclude Include="Common\Network\CTcpServer.h" />
+    <ClInclude Include="Common\Network\CUdpClient.h" />
+    <ClInclude Include="Common\Network\CUdpServer.h" />
+    <ClInclude Include="Common\Network\INetwork.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
