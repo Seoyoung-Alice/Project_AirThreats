@@ -11,14 +11,42 @@
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#include <stdio.h>
+#include <string>
 
 // Need to link with Ws2_32.lib
 #pragma comment(lib, "ws2_32.lib")
 
 #define DEFAULT_BUFLEN 512
 
-class CTcpClient
+namespace name_network
 {
-};
+namespace name_tcp
+{
+	class CTcpClient
+	{
+	public:
+		CTcpClient();
+		CTcpClient(std::string strServerAddr, int nPort);
+		virtual ~CTcpClient();
+
+	private:
+		sockaddr_in m_server;
+		SOCKET m_clientSock;
+
+		std::string m_strServerAddr;
+		int m_nPort;
+
+		int InitialWinSock();
+		bool CreateSock();
+		int Connect();
+
+	public:
+		bool StartUdp();
+		bool ReConnect();
+
+		int RecvUdpMessage(char* pBuf, int nSize);
+		int SendUdpMessage(char* pBuf, int& nSize);
+	};
+}	/* namespace name_tcp */
+}	/* namespace name_network */
 

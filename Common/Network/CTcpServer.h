@@ -37,16 +37,19 @@ namespace name_tcp
 		std::string m_strServerAddr;
 		int m_nPort;
 
-		bool InitialWinSock();
+		int InitialWinSock();
 		int CreateSock();
 		int Bind();
+		int Listen();
+		int Accept();
 
 	public:
 		bool StartUdp();
+		bool ReConnect();
 
 		int RecvUdpMessage(char* pBuf, int nSize);
 		int SendUdpMessage(char* pBuf, int& nSize);
 	};
-}	/* namespace name_udp */
+}	/* namespace name_tcp */
 }	/* namespace name_network */
 
